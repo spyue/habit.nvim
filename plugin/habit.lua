@@ -1,3 +1,3 @@
-vim.api.nvim_create_user_command("HabitInsert", fucntion()
-  require("habit").insert)
-end, { desc = "Inserts your habit tracker template below the cursor" })
+vim.api.nvim_create_user_command("HabitInsert", function()
+	require("habit").insert()
+end, { desc = "Insert a habit tracker below the cursor" })
