@@ -17,6 +17,7 @@ M.defaults = {
 	keymaps = {
 		insert = "<localleader>hi",
 		toggle = "<localleader>hd",
+		stats = "<localleader>hs",
 	},
 }
 

@@ -46,4 +46,63 @@ function M.line(line)
 	return { name = name, boxes = boxes }
 end
 
+-- Turns date_format into a lua pattern
+local function date_pattern(fmt)
+	local order = {}
+	local pat = fmt:gsub("[%^%$%(%)%.%[%]%*%+%-%?]", "%%%0")
+	pat = pat:gsub("%%([Ymd])", function(k)
+		table.insert(order, k)
+		return k == "Y" and "(%d%d%d%d)" or "(%d%d)"
+	end)
+	return "^" .. pat, order
+end
+
+-- Read the date at the start of a header line and return timestamp
+function M.date(text)
+	local pat, order = date_pattern(config.options.date_format)
+	local caps = { text:match(pat) }
+	if #caps ~= 3 then
+		return nil
+	end
+
+	local t = { hour = 12 }
+	for i, k in ipairs(order) do
+		local n = tonumber(caps[i])
+		if k == "Y" then
+			t.year = n
+		elseif k == "m" then
+			t.month = n
+		else
+			t.day = n
+		end
+	end
+	return os.time(t)
+end
+
+-- Find every tracker in a list of lines:
+-- a header line with a date followed by one or more tasks
+function M.trackers(lines)
+	local found = {}
+	local i = 2
+
+	while i <= #lines do
+		local task = M.line(lines[i])
+		local start = task and M.date(vim.trim(lines[i - 1]))
+
+		if start then
+			local tracker = { start = start, line = i - 1, tasks = {} }
+			while task do
+				table.insert(tracker.tasks, task)
+				i = i + 1
+				task = lines[i] and M.line(lines[i])
+			end
+			table.insert(found, tracker)
+		else
+			i = i + 1
+		end
+	end
+
+	return found
+end
+
 return M

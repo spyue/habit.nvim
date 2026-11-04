@@ -16,6 +16,12 @@ function M.setup(opts)
 	if toggle_key then
 		vim.keymap.set("n", toggle_key, M.toggle, { desc = "Flip box the cursor is hovering" })
 	end
+
+	-- toggle stats
+	local stats_key = config.options.keymaps.stats
+	if stats_key then
+		vim.keymap.set("n", stats_key, M.stats, { desc = "Show stats screen" })
+	end
 end
 
 local function width(s)
@@ -74,6 +80,10 @@ end
 
 function M.toggle()
 	require("habit.toggle").toggle()
+end
+
+function M.stats()
+	require("habit.ui").open()
 end
 
 return M
