@@ -14,7 +14,7 @@ task c      [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
 
 ## Features Coming Soon
 - [ ] Flip the box under the cursor
-- [ ] Parser for turning trackers into data
+- [X] Parser for turning trackers into data
 - [ ] Scraper for subdirectories of current for stats
 - [ ] Display screen showing upon command showing streaks and tasks for the week
 - [ ] More info on install on other systems and plugin managers
