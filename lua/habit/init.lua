@@ -2,7 +2,7 @@
 local M = {}
 
 M.config = {
-	-- this is where you change your tasks
+	-- this is default, change your tasks in habit.lua in your dotfiles
 	tasks = { "task a", "task b", "task c" },
 
 	-- this is where you can change the days layout
@@ -11,7 +11,7 @@ M.config = {
 	done = "[X]",
 
 	--can change date fromat here
-	date_format = "%d-%m-%Y",
+	date_format = "%Y-%m-%d",
 	gap = 2,
 }
 
