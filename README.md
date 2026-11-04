@@ -22,7 +22,7 @@ task c      [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
 
 ## Install
 
-### [lazy.nvim]{https://github.com/folke/lazy.nvim}
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
 {
   "spyue/habit.nvim",
