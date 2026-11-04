@@ -13,10 +13,19 @@ M.config = {
 	--can change date fromat here
 	date_format = "%Y-%m-%d",
 	gap = 2,
+
+	keymaps = {
+		insert = "<localleader>hi",
+	},
 }
 
 function M.setup(opts)
 	M.config = vim.tbl_deep_extend("force", M.config, opts or {})
+
+	local insert_key = M.config.keymaps.insert
+	if insert_key then
+		vim.keymap.set("n", insert_key, M.insert, { desc = "Insert habit tracker" })
+	end
 end
 
 local function width(s)
