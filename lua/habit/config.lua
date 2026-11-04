@@ -1,4 +1,4 @@
--- habit.nvim shared config
+-- habit.nvim: shared config
 local M = {}
 
 M.defaults = {

@@ -1,4 +1,4 @@
--- Weekly habit tracker for nvim
+-- habit.nvim: tracker inserter
 local config = require("habit.config")
 
 local M = {}
