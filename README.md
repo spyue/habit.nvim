@@ -13,7 +13,7 @@ task c      [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
 - Customizable tasks, day labels, and date format through spec file
 
 ## Features Coming Soon
-- [ ] Flip the box under the cursor
+- [X] Flip the box under the cursor
 - [X] Parser for turning trackers into data
 - [ ] Scraper for subdirectories of current for stats
 - [ ] Display screen showing upon command showing streaks and tasks for the week

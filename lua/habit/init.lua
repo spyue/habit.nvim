@@ -6,9 +6,15 @@ local M = {}
 function M.setup(opts)
 	config.setup(opts)
 
+	-- insert key
 	local insert_key = config.options.keymaps.insert
 	if insert_key then
 		vim.keymap.set("n", insert_key, M.insert, { desc = "Insert habit tracker" })
+	end
+	-- toggle key
+	local toggle_key = config.options.keymaps.toggle
+	if toggle_key then
+		vim.keymap.set("n", toggle_key, M.toggle, { desc = "Flip box the cursor is hovering" })
 	end
 end
 
@@ -64,6 +70,10 @@ end
 function M.insert()
 	local row = vim.api.nvim_win_get_cursor(0)[1]
 	vim.api.nvim_buf_set_lines(0, row, row, false, M.build())
+end
+
+function M.toggle()
+	require("habit.toggle").toggle()
 end
 
 return M
