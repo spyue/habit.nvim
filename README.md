@@ -13,9 +13,10 @@ task c      [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
 - Customizable tasks, day labels, and date format through spec file
 
 ## Features Coming Soon
-- Parser for finding habit trackers in files
-- Display screen showing upon command showing streaks and tasks for the week
-- More info on install on other systems and plugin managers
+- [ ] Flip the box under the cursor
+- [ ] Parser for finding habit trackers in files
+- [ ] Display screen showing upon command showing streaks and tasks for the week
+- [ ] More info on install on other systems and plugin managers
 
 ## Reqs
 - nvim 9.0 or higher
