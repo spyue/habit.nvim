@@ -1,28 +1,12 @@
 -- Weekly habit tracker for nvim
+local config = require("habit.config")
+
 local M = {}
 
-M.config = {
-	-- this is default, change your tasks in habit.lua in your dotfiles
-	tasks = { "task a", "task b", "task c" },
-
-	-- this is where you can change the days layout
-	days = { "M", "T", "W", "T", "F", "S", "S" },
-	empty = "[ ]",
-	done = "[X]",
-
-	--can change date fromat here
-	date_format = "%Y-%m-%d",
-	gap = 2,
-
-	keymaps = {
-		insert = "<localleader>hi",
-	},
-}
-
 function M.setup(opts)
-	M.config = vim.tbl_deep_extend("force", M.config, opts or {})
+	config.setup(opts)
 
-	local insert_key = M.config.keymaps.insert
+	local insert_key = config.options.keymaps.insert
 	if insert_key then
 		vim.keymap.set("n", insert_key, M.insert, { desc = "Insert habit tracker" })
 	end
@@ -44,11 +28,11 @@ end
 local function week_start()
 	local now = os.time()
 	local weekday = tonumber(os.date("%u", now))
-	return os.date(M.config.date_format, now - (weekday - 1) * 86400)
+	return os.date(config.options.date_format, now - (weekday - 1) * 86400)
 end
 
 function M.build()
-	local c = M.config
+	local c = config.options
 	local date = week_start()
 
 	local first = width(date)
