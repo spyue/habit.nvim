@@ -9,6 +9,7 @@ M.defaults = {
 	days = { "M", "T", "W", "T", "F", "S", "S" },
 	empty = "[ ]",
 	done = "[X]",
+	omit = "[O]",
 
 	--can change date fromat here
 	date_format = "%Y-%m-%d",
@@ -18,6 +19,7 @@ M.defaults = {
 		insert = "<localleader>hi",
 		toggle = "<localleader>hd",
 		stats = "<localleader>hs",
+		omit = "<localleader>ho",
 	},
 }
 

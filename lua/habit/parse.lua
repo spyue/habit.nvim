@@ -7,28 +7,36 @@ local M = {}
 -- Gives a list {{col = #, done = true}, {col = #, done = false}}
 local function find_boxes(line)
 	local o = config.options
+	local kinds = {
+		{ state = "empty", symbol = o.empty },
+		{ state = "done", symbol = o.done },
+		{ state = "omit", symbol = o.omit },
+	}
 	local boxes = {}
 	local pos = 1
 
 	while true do
-		local e = line:find(o.empty, pos, true)
-		local d = line:find(o.done, pos, true)
-
-		local start, done
-		if e and (not d or e < d) then
-			start, done = e, false
-		elseif d then
-			start, done = d, true
-		else
+		local start, found
+		for _, kind in ipairs(kinds) do
+			local s = line:find(kind.symbol, pos, true)
+			if s and (not start or s < start) then
+				start, found = s, kind
+			end
+		end
+		if not start then
 			break
 		end
 
-		table.insert(boxes, { col = start, done = done })
-		pos = start + #(done and o.done or o.empty)
+		table.insert(boxes, {
+			col = start,
+			len = #found.symbol,
+			state = found.state,
+			done = found.state == "done",
+		})
+		pos = start + #found.symbol
 	end
 	return boxes
 end
-
 -- Parse one task row
 -- Return { name = ..., boxes = {...} }, or nil if row is not a
 -- proper tracker row (wrong amount of boxes, etc...)

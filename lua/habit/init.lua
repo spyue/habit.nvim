@@ -17,10 +17,16 @@ function M.setup(opts)
 		vim.keymap.set("n", toggle_key, M.toggle, { desc = "Flip box the cursor is hovering" })
 	end
 
-	-- toggle stats
-	local stats_key = config.options.keymaps.stats
-	if stats_key then
-		vim.keymap.set("n", stats_key, M.stats, { desc = "Show stats screen" })
+	-- omit key
+	local omit_key = config.options.keymaps.omit
+	if omit_key then
+		vim.keymap.set("n", omit_key, M.omit, { desc = "Omits the task for the day" })
+
+		-- toggle stats
+		local stats_key = config.options.keymaps.stats
+		if stats_key then
+			vim.keymap.set("n", stats_key, M.stats, { desc = "Show stats screen" })
+		end
 	end
 end
 
@@ -52,7 +58,7 @@ function M.build()
 		first = math.max(first, width(task))
 	end
 
-	local cell = math.max(width(c.empty), width(c.done))
+	local cell = math.max(width(c.empty), width(c.done), width(c.omit))
 	local sep = string.rep(" ", c.gap)
 
 	local lines = {}
@@ -80,6 +86,10 @@ end
 
 function M.toggle()
 	require("habit.toggle").toggle()
+end
+
+function M.omit()
+	require("habit.toggle").omit()
 end
 
 function M.stats()
