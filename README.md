@@ -59,13 +59,9 @@ change them (for lazy) or to setup for other plugin managers
 | Keybind| Description                                  |
 |--------|----------------------------------------------|
 | '\hi'  | Inserts tracker on the line under the cursor |
-|--------|----------------------------------------------|
 | '\hd'  | Marks habit done on a day                    |
-|--------|----------------------------------------------|
 | '\ho'  | Omit's the habit for that day                |
-|--------|----------------------------------------------|
 | '\hs'  | Shows your habit stats                       |
-|--------|----------------------------------------------|
 
 ### Lua API
 
