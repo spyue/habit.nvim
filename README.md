@@ -17,7 +17,8 @@ task c      [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
 - [X] Parser for turning trackers into data
 - [X] Scraper for subdirectories of current for stats
 - [X] Display screen showing upon command showing streaks and tasks for the week
-- [ ] More info on install on other systems and plugin managers
+- [X] Omit feature added for non-avoidable circumstances
+- [X] More info on install on other systems and plugin managers
 
 ## Reqs
 - nvim 9.0 or higher
@@ -58,6 +59,13 @@ change them (for lazy) or to setup for other plugin managers
 | Keybind| Description                                  |
 |--------|----------------------------------------------|
 | '\hi'  | Inserts tracker on the line under the cursor |
+|--------|----------------------------------------------|
+| '\hd'  | Marks habit done on a day                    |
+|--------|----------------------------------------------|
+| '\ho'  | Omit's the habit for that day                |
+|--------|----------------------------------------------|
+| '\hs'  | Shows your habit stats                       |
+|--------|----------------------------------------------|
 
 ### Lua API
 
